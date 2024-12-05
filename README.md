@@ -1,6 +1,6 @@
-#FinCat Financial Portfolio API
+# FinCat Financial Portfolio API
 
-##.Net Core based API to return stock and crypto information to the FinCat React App.
+## .Net Core based API to return stock and crypto information to the FinCat React App.
 
 - Entity Framework
 - Dependency Injection
