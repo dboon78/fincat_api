@@ -17,3 +17,6 @@ Finacial APIs, many used as fallbacks and to spread out the use of free tier cre
 - https://www.coinapi.io/
 - https://freecurrencyapi.com/ 
 - https://finnhub.io/
+
+
+Future Plans:  Use OpenAI's API to analyze the last 5 years of Balance sheets to give a faux financial analyst's summary of the company's last 5 years of business development.
