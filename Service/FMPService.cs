@@ -315,21 +315,6 @@ namespace api.Service
             }            
             return null;
         }
-        public async Task<string> GetFinancialAnalysis(string symbol)
-        { 
-            try{
-                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
-                var result=await _httpClient.GetAsync(apiurl($"balance-sheet-statement/{symbol}?limit=5&priod=annual"));
-                if(result.IsSuccessStatusCode){
-                    var content=await result.Content.ReadAsStringAsync();
-                    return content;
-                    
-                }
-                
-            }catch(Exception err){                
-            }            
-            return null;
-                    
-        }
+
     }
 }

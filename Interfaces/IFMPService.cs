@@ -25,7 +25,6 @@ namespace api.Interfaces
         Task<FMPKeyRatios[]> GetKeyRatiosAsync(string symbol);
         Task<FMPProfile[]> GetProfilesAsync(string symbol);
         Task<FMPIncomeStatement[]> GetIncomeStatement(string symbol);
-        Task<string> GetFinancialAnalysis(string symbol);
         
     }
 }
