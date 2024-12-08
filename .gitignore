@@ -2,6 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+appsettings.json
+appsettings.Production.json
 /.vs/api/FileContentIndex
 /.vs/api/v17
 Helpers/GoogleServiceHelper.cs
@@ -10,4 +12,3 @@ bin
 obj
 obj/Debug
 obj/Debug/net8.0
-appsettings.json
