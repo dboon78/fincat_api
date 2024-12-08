@@ -18,6 +18,9 @@ namespace api.Data
             modelBuilder.Entity<Portfolio>()
                 .HasKey(p => p.PortfolioId);
 
+            modelBuilder.Entity<CompanyFinancialData>()
+                .HasKey(d=>d.FinDataId);
+
             // Configure primary key for Holding
             modelBuilder.Entity<Holding>()
                 .HasKey(h => h.HoldingId);
@@ -158,5 +161,6 @@ namespace api.Data
         public DbSet<CoinPaprikaCoin> CoinPaprikaCoins{ get; set; }
         
         public DbSet<Currency> Currencies{ get; set; }
+        public DbSet<CompanyFinancialData> CompanyFinancials { get;}
     }
 }

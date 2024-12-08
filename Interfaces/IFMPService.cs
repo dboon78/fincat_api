@@ -19,6 +19,13 @@ namespace api.Interfaces
         Task<List<FMPSearch>> GetSearch(string query);
 
         Task<List<StockExchange>> UpdateExchanges();
+        Task<FMPBalanceSheet[]> GetBalanceSheetsAsync(string symbol);
+
+        Task<FMPCashFlow[]> GetCashFlowsAsync(string symbol);
+        Task<FMPKeyRatios[]> GetKeyRatiosAsync(string symbol);
+        Task<FMPProfile[]> GetProfilesAsync(string symbol);
+        Task<FMPIncomeStatement[]> GetIncomeStatement(string symbol);
+        Task<string> GetFinancialAnalysis(string symbol);
         
     }
 }

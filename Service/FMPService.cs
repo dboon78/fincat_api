@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace api.Service
 {
+
     public class FMPService : IFMPService
     {
         private readonly HttpClient _httpClient;
@@ -233,6 +234,102 @@ namespace api.Service
                 }
             }
             return null;
+        }
+        public async Task<FMPBalanceSheet[]> GetBalanceSheetsAsync(string symbol){
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"balance-sheet-statement/{symbol}?limit=5&priod=annual"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    
+                    // Console.WriteLine("GetBalanceSheetsAsync: "+content);
+                    var data=JsonConvert.DeserializeObject<FMPBalanceSheet[]>(content);
+                    if(data==null){
+                        return null;
+                    }
+                    return data;
+                }
+            }catch(Exception err){    
+                Console.WriteLine("error:"+err.Message);
+            }            
+            return null;
+        }
+        public async Task<FMPCashFlow[]> GetCashFlowsAsync(string symbol){
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"cash-flow-statement/{symbol}?limit=5&priod=annual"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    
+                    Console.WriteLine("GetCashFlowsAsync: "+content);
+                    var data=JsonConvert.DeserializeObject<FMPCashFlow[]>(content);
+                    return data;
+                }
+            }catch(Exception err){                
+            }            
+            return null;
+        }
+        public async Task<FMPKeyRatios[]> GetKeyRatiosAsync(string symbol){
+//ratios/AAPL?period=quarter
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"ratios/{symbol}?limit=5&priod=annual"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    
+                    //Console.WriteLine("FindStockBySymbolAsync: "+content);
+                    var data=JsonConvert.DeserializeObject<FMPKeyRatios[]>(content);
+                    return data;
+                }
+            }catch(Exception err){                
+            }            
+            return null;
+        }
+        public async Task<FMPProfile[]> GetProfilesAsync(string symbol){
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"profile/{symbol}"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    
+                    //Console.WriteLine("FindStockBySymbolAsync: "+content);
+                    var data=JsonConvert.DeserializeObject<FMPProfile[]>(content);
+                    return data;
+                }
+            }catch(Exception err){                
+            }            
+            return null;
+        }
+        public async Task<FMPIncomeStatement[]> GetIncomeStatement(string symbol){
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"income-statement/{symbol}?limit=5&priod=annual"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    
+                    //Console.WriteLine("FindStockBySymbolAsync: "+content);
+                    var data=JsonConvert.DeserializeObject<FMPIncomeStatement[]>(content);
+                    return data;
+                }
+            }catch(Exception err){                
+            }            
+            return null;
+        }
+        public async Task<string> GetFinancialAnalysis(string symbol)
+        { 
+            try{
+                //Console.WriteLine("FMPService FindStockBySymbolAsync "+symbol);
+                var result=await _httpClient.GetAsync(apiurl($"balance-sheet-statement/{symbol}?limit=5&priod=annual"));
+                if(result.IsSuccessStatusCode){
+                    var content=await result.Content.ReadAsStringAsync();
+                    return content;
+                    
+                }
+                
+            }catch(Exception err){                
+            }            
+            return null;
+                    
         }
     }
 }
